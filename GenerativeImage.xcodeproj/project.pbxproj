@@ -99,6 +99,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0989865F1B878D8100806FFC /* Build configuration list for PBXNativeTarget "vizsum" */;
 			buildPhases = (
+				098986791B88C80400806FFC /* ShellScript */,
 				098986541B878D8100806FFC /* Sources */,
 				098986551B878D8100806FFC /* Frameworks */,
 				098986561B878D8100806FFC /* CopyFiles */,
@@ -142,6 +143,22 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		098986791B88C80400806FFC /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "VERSION=$(git describe --all)\nexport GCC_PREPROCESSOR_DEFINITIONS=\"${GCC_PREPROCESSOR_DEFINITIONS} VIZSUM_VERSION=${VERSION}\"\neval ${GCC_PREPROCESSOR_DEFINITIONS}\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		098986541B878D8100806FFC /* Sources */ = {
@@ -260,9 +277,9 @@
 					"$(SDKROOT)/usr/lib/system",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_BUILDER = emcconville;
-				VERSION_INFO_FILE = version_info.c;
+				VERSIONING_SYSTEM = "";
+				VERSION_INFO_BUILDER = "";
+				VERSION_INFO_FILE = "";
 			};
 			name = Debug;
 		};
@@ -274,9 +291,9 @@
 					"$(SDKROOT)/usr/lib/system",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_BUILDER = emcconville;
-				VERSION_INFO_FILE = version_info.c;
+				VERSIONING_SYSTEM = "";
+				VERSION_INFO_BUILDER = "";
+				VERSION_INFO_FILE = "";
 			};
 			name = Release;
 		};
@@ -299,6 +316,7 @@
 				098986611B878D8100806FFC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
