@@ -1,0 +1,306 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0989865C1B878D8100806FFC /* vizsum.c in Sources */ = {isa = PBXBuildFile; fileRef = 0989865B1B878D8100806FFC /* vizsum.c */; };
+		098986641B878E0500806FFC /* md5.c in Sources */ = {isa = PBXBuildFile; fileRef = 098986621B878E0500806FFC /* md5.c */; };
+		098986671B878F5300806FFC /* sha1.c in Sources */ = {isa = PBXBuildFile; fileRef = 098986651B878F5300806FFC /* sha1.c */; };
+		098986691B87939B00806FFC /* libMagickCore-6.Q16.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 098986681B87939B00806FFC /* libMagickCore-6.Q16.1.dylib */; };
+		0989866B1B8793B800806FFC /* libMagickWand-6.Q16.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0989866A1B8793B800806FFC /* libMagickWand-6.Q16.1.dylib */; };
+		098986741B88134A00806FFC /* hashimg.c in Sources */ = {isa = PBXBuildFile; fileRef = 098986721B88134A00806FFC /* hashimg.c */; };
+		098986771B8898CE00806FFC /* algos.c in Sources */ = {isa = PBXBuildFile; fileRef = 098986751B8898CE00806FFC /* algos.c */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		098986561B878D8100806FFC /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		098986581B878D8100806FFC /* vizsum */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = vizsum; sourceTree = BUILT_PRODUCTS_DIR; };
+		0989865B1B878D8100806FFC /* vizsum.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vizsum.c; sourceTree = "<group>"; };
+		098986621B878E0500806FFC /* md5.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = md5.c; sourceTree = "<group>"; };
+		098986631B878E0500806FFC /* md5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = md5.h; sourceTree = "<group>"; };
+		098986651B878F5300806FFC /* sha1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sha1.c; sourceTree = "<group>"; };
+		098986661B878F5300806FFC /* sha1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sha1.h; sourceTree = "<group>"; };
+		098986681B87939B00806FFC /* libMagickCore-6.Q16.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libMagickCore-6.Q16.1.dylib"; path = "../../../../usr/local/lib/libMagickCore-6.Q16.1.dylib"; sourceTree = "<group>"; };
+		0989866A1B8793B800806FFC /* libMagickWand-6.Q16.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libMagickWand-6.Q16.1.dylib"; path = "../../../../usr/local/lib/libMagickWand-6.Q16.1.dylib"; sourceTree = "<group>"; };
+		098986721B88134A00806FFC /* hashimg.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = hashimg.c; sourceTree = "<group>"; };
+		098986731B88134A00806FFC /* hashimg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hashimg.h; sourceTree = "<group>"; };
+		098986751B8898CE00806FFC /* algos.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = algos.c; sourceTree = "<group>"; };
+		098986761B8898CE00806FFC /* algos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = algos.h; sourceTree = "<group>"; };
+		098986781B88C1DE00806FFC /* vizsum.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = vizsum.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		098986551B878D8100806FFC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0989866B1B8793B800806FFC /* libMagickWand-6.Q16.1.dylib in Frameworks */,
+				098986691B87939B00806FFC /* libMagickCore-6.Q16.1.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0989864F1B878D8100806FFC = {
+			isa = PBXGroup;
+			children = (
+				0989866A1B8793B800806FFC /* libMagickWand-6.Q16.1.dylib */,
+				098986681B87939B00806FFC /* libMagickCore-6.Q16.1.dylib */,
+				0989865A1B878D8100806FFC /* GenerativeImage */,
+				098986591B878D8100806FFC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		098986591B878D8100806FFC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				098986581B878D8100806FFC /* vizsum */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0989865A1B878D8100806FFC /* GenerativeImage */ = {
+			isa = PBXGroup;
+			children = (
+				0989865B1B878D8100806FFC /* vizsum.c */,
+				098986781B88C1DE00806FFC /* vizsum.h */,
+				098986751B8898CE00806FFC /* algos.c */,
+				098986761B8898CE00806FFC /* algos.h */,
+				098986621B878E0500806FFC /* md5.c */,
+				098986631B878E0500806FFC /* md5.h */,
+				098986651B878F5300806FFC /* sha1.c */,
+				098986661B878F5300806FFC /* sha1.h */,
+				098986721B88134A00806FFC /* hashimg.c */,
+				098986731B88134A00806FFC /* hashimg.h */,
+			);
+			path = GenerativeImage;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		098986571B878D8100806FFC /* vizsum */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0989865F1B878D8100806FFC /* Build configuration list for PBXNativeTarget "vizsum" */;
+			buildPhases = (
+				098986541B878D8100806FFC /* Sources */,
+				098986551B878D8100806FFC /* Frameworks */,
+				098986561B878D8100806FFC /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = vizsum;
+			productName = GenerativeImage;
+			productReference = 098986581B878D8100806FFC /* vizsum */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		098986501B878D8100806FFC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0640;
+				ORGANIZATIONNAME = emcconville;
+				TargetAttributes = {
+					098986571B878D8100806FFC = {
+						CreatedOnToolsVersion = 6.4;
+					};
+				};
+			};
+			buildConfigurationList = 098986531B878D8100806FFC /* Build configuration list for PBXProject "GenerativeImage" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 0989864F1B878D8100806FFC;
+			productRefGroup = 098986591B878D8100806FFC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				098986571B878D8100806FFC /* vizsum */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		098986541B878D8100806FFC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				098986671B878F5300806FFC /* sha1.c in Sources */,
+				098986641B878E0500806FFC /* md5.c in Sources */,
+				0989865C1B878D8100806FFC /* vizsum.c in Sources */,
+				098986741B88134A00806FFC /* hashimg.c in Sources */,
+				098986771B8898CE00806FFC /* algos.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		0989865D1B878D8100806FFC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"MAGICKCORE_HDRI_ENABLE=0",
+					"MAGICKCORE_QUANTUM_DEPTH=16",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"/usr/local/include/ImageMagick-6",
+				);
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		0989865E1B878D8100806FFC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"MAGICKCORE_HDRI_ENABLE=0",
+					"MAGICKCORE_QUANTUM_DEPTH=16",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"/usr/local/include/ImageMagick-6",
+				);
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		098986601B878D8100806FFC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/lib/system",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_BUILDER = emcconville;
+				VERSION_INFO_FILE = version_info.c;
+			};
+			name = Debug;
+		};
+		098986611B878D8100806FFC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/lib/system",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_BUILDER = emcconville;
+				VERSION_INFO_FILE = version_info.c;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		098986531B878D8100806FFC /* Build configuration list for PBXProject "GenerativeImage" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0989865D1B878D8100806FFC /* Debug */,
+				0989865E1B878D8100806FFC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0989865F1B878D8100806FFC /* Build configuration list for PBXNativeTarget "vizsum" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				098986601B878D8100806FFC /* Debug */,
+				098986611B878D8100806FFC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 098986501B878D8100806FFC /* Project object */;
+}
