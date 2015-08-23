@@ -29,6 +29,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		09674EED1B8921C20052CBA5 /* version.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
 		098986581B878D8100806FFC /* vizsum */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = vizsum; sourceTree = BUILT_PRODUCTS_DIR; };
 		0989865B1B878D8100806FFC /* vizsum.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vizsum.c; sourceTree = "<group>"; };
 		098986621B878E0500806FFC /* md5.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = md5.c; sourceTree = "<group>"; };
@@ -88,6 +89,7 @@
 				098986661B878F5300806FFC /* sha1.h */,
 				098986721B88134A00806FFC /* hashimg.c */,
 				098986731B88134A00806FFC /* hashimg.h */,
+				09674EED1B8921C20052CBA5 /* version.h */,
 			);
 			path = GenerativeImage;
 			sourceTree = "<group>";
@@ -155,8 +157,8 @@
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/bash;
-			shellScript = "VERSION=$(git describe --all)\nexport GCC_PREPROCESSOR_DEFINITIONS=\"${GCC_PREPROCESSOR_DEFINITIONS} VIZSUM_VERSION=${VERSION}\"\neval ${GCC_PREPROCESSOR_DEFINITIONS}\n";
+			shellPath = /bin/sh;
+			shellScript = "VERSION=$(git describe --long)\necho \"#define VIZSUM_VERSION \\\"${VERSION}\\\"\" > ${SRCROOT}/GenerativeImage/version.h";
 		};
 /* End PBXShellScriptBuildPhase section */
 

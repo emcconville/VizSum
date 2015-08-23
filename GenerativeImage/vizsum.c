@@ -17,7 +17,7 @@
 
 void usage(const char * p)
 {
-    const char * message = "\n"
+    const char * message = "Version: " VIZSUM_VERSION "\n"
     "Usage: %s [options ...] outfile\n"
     "\n"
     "Options:\n"

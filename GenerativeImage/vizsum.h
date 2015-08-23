@@ -9,9 +9,7 @@
 #ifndef GenerativeImage_vizsum_h
 #define GenerativeImage_vizsum_h
 
-#ifndef VIZSUM_VERSION
-#define VIZSUM_VERSION "UNKOWN"
-#endif
+#include "version.h"
 
 void usage(const char * p);
 
