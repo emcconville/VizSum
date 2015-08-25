@@ -11,6 +11,10 @@
 
 #include "version.h"
 
+/*!
+ * @abstract Prints common CLI arguments to stdout.
+ * @param p Null-terminated string of application name.
+ */
 void usage(const char * p);
 
 #endif
