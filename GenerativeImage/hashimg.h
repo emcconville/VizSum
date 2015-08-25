@@ -29,12 +29,17 @@ struct sha1_map {
     struct color c1, c2;
 };
 
-enum alog { ALGO_MD5, ALGO_SHA1 };
+struct hue_map {
+    struct coord v;
+    unsigned char h;
+};
+
+enum alog { ALGO_MD5 = 1, ALGO_SHA1 = 2, ALGO_HUE = 4 };
 
 double char_to_double(unsigned char byte);
 
 void append_color(double * list, size_t * counter, struct color * c);
 void append_coord(double * list, size_t * counter, struct coord * v);
-
+void append_hue(double * list, size_t * counter, unsigned char h);
 
 #endif /* defined(__GenerativeImage__hashimg__) */

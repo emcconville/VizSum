@@ -22,15 +22,19 @@ void usage(const char * p)
     "\n"
     "Options:\n"
     "  Digest Algorithm:\n"
-    "    -md5           MD5 message-digest algorithm\n"
-    "    -sha1          SHA1 message-digest algorithm\n\n"
+    "    -md5           MD5 message-digest algorithm.\n"
+    "    -sha1          SHA1 message-digest algorithm.\n"
+    "\n"
     "  Color Interpolate:\n"
-    "    -barycentric   Use Barycentric Color Interpolate\n"
-    "    -bilinear      Use Bilinear Color Interpolate\n"
-    "    -polynomial    Use Polynomial Color Interpolate\n"
-    "    -shepards      Use Shepards Color Interpolate\n"
-    "    -voronoi       Use Voronoi Color Interpolate\n"
-    "    -inverse       Use Inverse Color Interpolate\n"
+    "    -barycentric   Use Barycentric Color Interpolate.\n"
+    "    -bilinear      Use Bilinear Color Interpolate.\n"
+    "    -shepards      Use Shepards Color Interpolate.\n"
+    "    -voronoi       Use Voronoi Color Interpolate.\n"
+    "    -inverse       Use Inverse Color Interpolate.\n"
+    "\n"
+    "  Mode:\n"
+    "    -hue           Only interprete digest values as hue degrees.\n"
+    "\n"
     ;
     printf(message, p);
 }
@@ -40,6 +44,8 @@ int main(int argc, const char * argv[]) {
     
     MagickWand * wand;
     PixelWand * bg;
+    ExceptionType err;
+    char * message;
     SparseColorMethod method = BarycentricColorInterpolate;
     const char * outfile = NULL;
     enum alog algo_method = ALGO_MD5;
@@ -49,8 +55,6 @@ int main(int argc, const char * argv[]) {
             method = BarycentricColorInterpolate;
         } else if (strcmp(argv[i], "-bilinear") == 0) {
             method = BilinearColorInterpolate;
-        } else if (strcmp(argv[i], "-polynomial") == 0) {
-            method = PolynomialColorInterpolate;
         } else if (strcmp(argv[i], "-shepards") == 0) {
             method = ShepardsColorInterpolate;
         } else if (strcmp(argv[i], "-voronoi") == 0) {
@@ -58,9 +62,11 @@ int main(int argc, const char * argv[]) {
         } else if (strcmp(argv[i], "-inverse") == 0) {
             method = InverseColorInterpolate;
         } else if (strcmp(argv[i], "-md5") == 0) {
-            algo_method = ALGO_MD5;
+            algo_method = ALGO_MD5 | (algo_method & ALGO_HUE);
         } else if (strcmp(argv[i], "-sha1") == 0) {
-            algo_method = ALGO_SHA1;
+            algo_method = ALGO_SHA1 | (algo_method & ALGO_HUE);
+        } else if (strcmp(argv[i], "-hue") == 0) {
+            algo_method |= ALGO_HUE;
         } else {
             if (argv[i][0] == '-') {
                 fprintf(stderr, "Unknown options `%s'\n", argv[i]);
@@ -85,15 +91,20 @@ int main(int argc, const char * argv[]) {
     struct context argument;
     argument.argument_count = 0;
     
-    switch (algo_method) {
-        case ALGO_MD5: {
+    if (algo_method & ALGO_MD5) {
+        if (algo_method & ALGO_HUE) {
+            algo_populate_md5_hue(&argument);
+        } else {
             algo_populate_md5(&argument);
-            break;
         }
-        case ALGO_SHA1: {
+    } else if (algo_method & ALGO_SHA1) {
+        if (algo_method & ALGO_HUE) {
+            algo_populate_sha1_hue(&argument);
+        } else {
             algo_populate_sha1(&argument);
-            break;
         }
+    } else {
+        fprintf(stderr, "Unknown digest method\n");
     }
 
     MagickWandGenesis();
@@ -101,13 +112,25 @@ int main(int argc, const char * argv[]) {
     PixelSetColor(bg, "white");
     wand = NewMagickWand();
     MagickNewImage(wand, 0xFF, 0xFF, bg);
+    bg = DestroyPixelWand(bg);
+
     MagickSparseColorImage(wand,
                            AllChannels,
                            method,
                            argument.argument_count,
                            argument.arguments);
-    MagickWriteImage(wand, outfile);
-    DestroyPixelWand(bg);
+    message = MagickGetException(wand, &err);
+    if ( err != UndefinedException ) {
+        fprintf(stderr, "%s\n", message);
+        RelinquishMagickMemory(message);
+    } else {
+        MagickWriteImage(wand, outfile);
+        message = MagickGetException(wand, &err);
+        if ( err != UndefinedException ) {
+            fprintf(stderr, "%s\n", message);
+            RelinquishMagickMemory(message);
+        }
+    }
     DestroyMagickWand(wand);
     MagickWandTerminus();
 

@@ -18,7 +18,11 @@ struct context {
     double arguments[ALGO_CONTEXT_BUFFER_LENGTH];
 };
 
+void algo_hash_md5(unsigned char * md5_digest);
 void algo_populate_md5(struct context * c);
+void algo_populate_md5_hue(struct context * c);
+void algo_hash_sha1(unsigned char * sha1_digest);
 void algo_populate_sha1(struct context * c);
+void algo_populate_sha1_hue(struct context * c);
 
 #endif /* defined(__GenerativeImage__algos__) */
