@@ -10,18 +10,7 @@
 #define __GenerativeImage__algos__
 
 #include <stdio.h>
-
-#define ALGO_CONTEXT_BUFFER_LENGTH 1024
-
-/*!
- * @struct context
- * @abstract Holds flat list of doubles for MagickSparseColorImage.
- * @seealso MagickSparseColorImage
- */
-struct context {
-    size_t argument_count;
-    double arguments[ALGO_CONTEXT_BUFFER_LENGTH];
-};
+#include "vizsum-types.h"
 
 /*!
  * @abstract Fill pointer with MD5 digest information from STDIN

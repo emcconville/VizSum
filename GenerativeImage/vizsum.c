@@ -12,7 +12,7 @@
 #include <wand/MagickWand.h>
 
 #include "vizsum.h"
-#include "hashimg.h"
+#include "vizsum-types.h"
 #include "algos.h" 
 
 void usage(const char * p)

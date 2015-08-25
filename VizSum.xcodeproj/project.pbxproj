@@ -10,8 +10,6 @@
 		0989865C1B878D8100806FFC /* vizsum.c in Sources */ = {isa = PBXBuildFile; fileRef = 0989865B1B878D8100806FFC /* vizsum.c */; };
 		098986641B878E0500806FFC /* md5.c in Sources */ = {isa = PBXBuildFile; fileRef = 098986621B878E0500806FFC /* md5.c */; };
 		098986671B878F5300806FFC /* sha1.c in Sources */ = {isa = PBXBuildFile; fileRef = 098986651B878F5300806FFC /* sha1.c */; };
-		098986691B87939B00806FFC /* libMagickCore-6.Q16.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 098986681B87939B00806FFC /* libMagickCore-6.Q16.1.dylib */; };
-		0989866B1B8793B800806FFC /* libMagickWand-6.Q16.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0989866A1B8793B800806FFC /* libMagickWand-6.Q16.1.dylib */; };
 		098986741B88134A00806FFC /* hashimg.c in Sources */ = {isa = PBXBuildFile; fileRef = 098986721B88134A00806FFC /* hashimg.c */; };
 		098986771B8898CE00806FFC /* algos.c in Sources */ = {isa = PBXBuildFile; fileRef = 098986751B8898CE00806FFC /* algos.c */; };
 /* End PBXBuildFile section */
@@ -36,13 +34,12 @@
 		098986631B878E0500806FFC /* md5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = md5.h; sourceTree = "<group>"; };
 		098986651B878F5300806FFC /* sha1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sha1.c; sourceTree = "<group>"; };
 		098986661B878F5300806FFC /* sha1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sha1.h; sourceTree = "<group>"; };
-		098986681B87939B00806FFC /* libMagickCore-6.Q16.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libMagickCore-6.Q16.1.dylib"; path = "../../../../usr/local/lib/libMagickCore-6.Q16.1.dylib"; sourceTree = "<group>"; };
-		0989866A1B8793B800806FFC /* libMagickWand-6.Q16.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libMagickWand-6.Q16.1.dylib"; path = "../../../../usr/local/lib/libMagickWand-6.Q16.1.dylib"; sourceTree = "<group>"; };
 		098986721B88134A00806FFC /* hashimg.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = hashimg.c; sourceTree = "<group>"; };
 		098986731B88134A00806FFC /* hashimg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hashimg.h; sourceTree = "<group>"; };
 		098986751B8898CE00806FFC /* algos.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = algos.c; sourceTree = "<group>"; };
 		098986761B8898CE00806FFC /* algos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = algos.h; sourceTree = "<group>"; };
 		098986781B88C1DE00806FFC /* vizsum.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = vizsum.h; sourceTree = "<group>"; };
+		09B6015D1B8C86A10075D5F2 /* vizsum-types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "vizsum-types.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,8 +47,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0989866B1B8793B800806FFC /* libMagickWand-6.Q16.1.dylib in Frameworks */,
-				098986691B87939B00806FFC /* libMagickCore-6.Q16.1.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,8 +56,6 @@
 		0989864F1B878D8100806FFC = {
 			isa = PBXGroup;
 			children = (
-				0989866A1B8793B800806FFC /* libMagickWand-6.Q16.1.dylib */,
-				098986681B87939B00806FFC /* libMagickCore-6.Q16.1.dylib */,
 				0989865A1B878D8100806FFC /* GenerativeImage */,
 				098986591B878D8100806FFC /* Products */,
 			);
@@ -90,6 +83,7 @@
 				098986721B88134A00806FFC /* hashimg.c */,
 				098986731B88134A00806FFC /* hashimg.h */,
 				09674EED1B8921C20052CBA5 /* version.h */,
+				09B6015D1B8C86A10075D5F2 /* vizsum-types.h */,
 			);
 			path = GenerativeImage;
 			sourceTree = "<group>";
@@ -158,7 +152,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "VERSION=$(git describe --long)\necho \"#define VIZSUM_VERSION \\\"${VERSION}\\\"\" > ${SRCROOT}/GenerativeImage/version.h";
+			shellScript = "VERSION=$(git describe --long)\nif [ -z $VERSION ]\nthen\n    VERSION=\"unknown\"\nfi\necho \"#define VIZSUM_VERSION \\\"${VERSION}\\\"\" > ${SRCROOT}/GenerativeImage/version.h";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -278,6 +272,10 @@
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/system",
 				);
+				OTHER_LDFLAGS = (
+					"-lMagickWand-7.Q16HDRI",
+					"-lMagickCore-7.Q16HDRI",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VERSIONING_SYSTEM = "";
 				VERSION_INFO_BUILDER = "";
@@ -291,6 +289,10 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/system",
+				);
+				OTHER_LDFLAGS = (
+					"-lMagickWand-7.Q16HDRI",
+					"-lMagickCore-7.Q16HDRI",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VERSIONING_SYSTEM = "";
