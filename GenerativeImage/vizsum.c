@@ -88,7 +88,7 @@ int main(int argc, const char * argv[]) {
         return 1;
     }
 
-    struct context argument;
+    struct context_heap argument;
     argument.argument_count = 0;
     
     if (algo_method & ALGO_MD5) {

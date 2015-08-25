@@ -22,7 +22,7 @@ void algo_hash_md5(unsigned char * md5_digest);
  * @abstract Populate list of doubles with values extracted from MD5 digest.
  * @param c Context structure.
  */
-void algo_populate_md5(struct context * c);
+void algo_populate_md5(struct context_heap * c);
 
 /*!
  * @abstract Populate list of doubles with values extracted from MD5 digest.
@@ -30,7 +30,7 @@ void algo_populate_md5(struct context * c);
  * @param c Structure/container to populate.
  * @seealso algo_populate_md5
  */
-void algo_populate_md5_hue(struct context * c);
+void algo_populate_md5_hue(struct context_heap * c);
 
 /*!
  * @abstract Fill pointer with SHA1 digest information from STDIN
@@ -42,7 +42,7 @@ void algo_hash_sha1(unsigned char * sha1_digest);
  * @abstract Populate list of doubles with values extracted from SHA1 digest.
  * @param c Context structure.
  */
-void algo_populate_sha1(struct context * c);
+void algo_populate_sha1(struct context_heap * c);
 
 /*!
  * @abstract Populate list of doubles with values extracted from SHA1 digest.
@@ -50,6 +50,6 @@ void algo_populate_sha1(struct context * c);
  * @param c Structure/container to populate.
  * @seealso algo_populate_md5
  */
-void algo_populate_sha1_hue(struct context * c);
+void algo_populate_sha1_hue(struct context_heap * c);
 
 #endif /* defined(__GenerativeImage__algos__) */

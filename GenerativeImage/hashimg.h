@@ -19,8 +19,22 @@
  */
 double char_to_double(unsigned char byte);
 
-void append_color(double * list, size_t * counter, struct color * c);
-void append_coord(double * list, size_t * counter, struct coord * v);
-void append_hue(double * list, size_t * counter, unsigned char h);
+/*!
+ * @abstract Updated doubles list with color value
+ * @param list Pointer to point container
+ */
+void append_color(struct context_heap * list, struct color * c);
+
+/*!
+ * @abstract Updated doubles list with coordinate value
+ * @param list Pointer to point container
+ */
+void append_coord(struct context_heap * list, struct coord * v);
+
+/*!
+ * @abstract Updated doubles list with color value calculated from hue angle.
+ * @param list Pointer to point container
+ */
+void append_hue(struct context_heap * list, unsigned char h);
 
 #endif /* defined(__GenerativeImage__hashimg__) */

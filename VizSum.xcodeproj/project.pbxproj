@@ -273,8 +273,8 @@
 					"$(SDKROOT)/usr/lib/system",
 				);
 				OTHER_LDFLAGS = (
-					"-lMagickWand-7.Q16HDRI",
-					"-lMagickCore-7.Q16HDRI",
+					"-lMagickWand-6.Q16",
+					"-lMagickCore-6.Q16",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VERSIONING_SYSTEM = "";
@@ -291,8 +291,8 @@
 					"$(SDKROOT)/usr/lib/system",
 				);
 				OTHER_LDFLAGS = (
-					"-lMagickWand-7.Q16HDRI",
-					"-lMagickCore-7.Q16HDRI",
+					"-lMagickWand-6.Q16",
+					"-lMagickCore-6.Q16",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VERSIONING_SYSTEM = "";

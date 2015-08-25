@@ -16,36 +16,69 @@
  * @abstract Holds flat list of doubles for MagickSparseColorImage.
  * @seealso MagickSparseColorImage
  */
-struct context {
+struct context_heap {
+    /*! Size of doubles in heap */
     size_t argument_count;
+    /*! Head of double heap. */
     double arguments[ALGO_CONTEXT_BUFFER_LENGTH];
 };
 
 
+/*!
+ * @struct coord
+ * @abstract Object holding X,Y coordinate system.
+ */
 struct coord {
+    /*! Vector points with values between 0x00 ~ 0xFF */
     unsigned char x, y;
 };
 
+/*!
+ * @struct color
+ * @abstract Object holding R,G,B color value.
+ */
 struct color {
+    /*! Color channel value between 0x00 & 0xFF */
     unsigned char r,g,b;
 };
 
+/*!
+ * @struct md5_map
+ * @abstract Map MD5 digest to point, and colors.
+ */
 struct md5_map {
+    /*! Image X,Y points to assicate color with. */
     struct coord v1, v2;
+    /*! Colors to render at points. */
     struct color c1, c2, cs, ce;
 };
 
+/*!
+ * @struct sha1_map
+ * @abstract Map SHA1 digest to point, and colors.
+ */
 struct sha1_map {
+    /*! Image X,Y points to assicate color with. */
     struct coord v1, v2;
+    /*! Colors to render at points. */
     struct color c1, c2;
 };
 
+/*!
+ * @struct hue_map
+ * @abstract Generic hue map that can be applied to any 3-byte algo.
+ */
 struct hue_map {
+    /*! Image X,Y point to assicate color with. */
     struct coord v;
+    /*! Angle of hue */
     unsigned char h;
 };
 
+/*!
+ * @enum algo
+ * @abstract Bitwise values for updating the current algo to execute at run-time.
+ */
 enum alog { ALGO_MD5 = 1, ALGO_SHA1 = 2, ALGO_HUE = 4 };
-
 
 #endif
