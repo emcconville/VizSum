@@ -10,6 +10,10 @@
 
 #include "vizsum-types.h"
 
+#ifndef LIST_PUSH
+#define LIST_PUSH(x, v) x->arguments[x->argument_count++] = v
+#endif
+
 double char_to_double(unsigned char byte)
 {
     return byte / 255.0;
@@ -17,16 +21,16 @@ double char_to_double(unsigned char byte)
 
 void append_color(struct context_heap * list, struct color * c)
 {
-    list->arguments[list->argument_count++] = char_to_double(c->r); // Red channel
-    list->arguments[list->argument_count++] = char_to_double(c->g); // Green channel
-    list->arguments[list->argument_count++] = char_to_double(c->b); // Blue channel
-    list->arguments[list->argument_count++] = 1.0;                  // Index channel
-    list->arguments[list->argument_count++] = 1.0;                  // Opacity channel
+    LIST_PUSH(list, char_to_double(c->r)); // Red channel
+    LIST_PUSH(list, char_to_double(c->g)); // Green channel
+    LIST_PUSH(list, char_to_double(c->b)); // Blue channel
+    LIST_PUSH(list, 1.0);                  // Index channel
+    LIST_PUSH(list, 1.0);                  // Opacity channel
 }
 void append_coord(struct context_heap * list, struct coord * v)
 {
-    list->arguments[list->argument_count++] = (double)v->x;
-    list->arguments[list->argument_count++] = (double)v->y;
+    LIST_PUSH(list, (double)v->x);
+    LIST_PUSH(list, (double)v->y);
 }
 
 void append_hue(struct context_heap * list, unsigned char h)
@@ -34,10 +38,10 @@ void append_hue(struct context_heap * list, unsigned char h)
     PixelWand * wand;
     wand = NewPixelWand();
     PixelSetHSL(wand, char_to_double(h), 1.0, 0.5);
-    list->arguments[list->argument_count++] = PixelGetRed(wand);    // Red channel
-    list->arguments[list->argument_count++] = PixelGetGreen(wand);  // Green channel
-    list->arguments[list->argument_count++] = PixelGetBlue(wand);   // Blue channel
-    list->arguments[list->argument_count++] = 1.0;                  // Index channel
-    list->arguments[list->argument_count++] = 1.0;                  // Opacity channel
+    LIST_PUSH(list, PixelGetRed(wand));    // Red channel
+    LIST_PUSH(list, PixelGetGreen(wand));  // Green channel
+    LIST_PUSH(list, PixelGetBlue(wand));   // Blue channel
+    LIST_PUSH(list, 1.0);                  // Index channel
+    LIST_PUSH(list, 1.0);                  // Opacity channel
     wand = DestroyPixelWand(wand);
 }
