@@ -50,17 +50,17 @@ See below for examples of diffrent ImageMagick Interpolation of each color.
 
     echo -n emcconville | vizsum -barycentric sumimg.png
 
-| Digest  | Flag | Hue only |
-|---------|------|----------|
-| Adler32 | `-barycentric -adler32` | `-barycentric -adler32 -hue` |
-|         | ![adler32](./imgs/adler32_barycentric.png) | ![adler32](./imgs/adler32_barycentric_hue.png) |
-| GOST    | `-barycentric -gost` | `-barycentric -gost -hue` |
-|         | ![GOST](./imgs/gost_barycentric.png) | ![GOST](./imgs/gost_barycentric_hue.png) |
-| MD5     | `-barycentric -md5` | `-barycentric -md5 -hue` |
-|         | ![MD5](./imgs/md5_barycentric.png) | ![MD5](./imgs/md5_barycentric_hue.png) |
-| SHA1    | `-barycentric -sha1` | `-barycentric -sha1 -hue` |
-|         | ![SHA1](./imgs/sha1_barycentric.png) | ![SHA1](./imgs/sha1_barycentric_hue.png) |
-| WHIRLPOOL | `-barycentric -whirlpool` | `-barycentric -whirlpool -hue` |
+| Digest  | Flag                                       | Hue only |
+|---------|--------------------------------------------|----------|
+| Adler32 | `-barycentric -adler32`                    | `-barycentric -adler32 -hue` |
+|         | _same as `-hue`_                           | ![adler32](./imgs/adler32_barycentric_hue.png) |
+| GOST    | `-barycentric -gost`                       | `-barycentric -gost -hue` |
+|         | ![GOST](./imgs/gost_barycentric.png)       | ![GOST](./imgs/gost_barycentric_hue.png) |
+| MD5     | `-barycentric -md5`                        | `-barycentric -md5 -hue` |
+|         | ![MD5](./imgs/md5_barycentric.png)         | ![MD5](./imgs/md5_barycentric_hue.png) |
+| SHA1    | `-barycentric -sha1`                       | `-barycentric -sha1 -hue` |
+|         | ![SHA1](./imgs/sha1_barycentric.png)       | ![SHA1](./imgs/sha1_barycentric_hue.png) |
+| WHIRLPOOL | `-barycentric -whirlpool`                | `-barycentric -whirlpool -hue` |
 |         | ![WHIRLPOOL](./imgs/whirlpool_barycentric.png) | ![WHIRLPOOL](./imgs/whirlpool_barycentric_hue.png) |
 
 ## Bilinear Interpolate
@@ -70,7 +70,7 @@ See below for examples of diffrent ImageMagick Interpolation of each color.
 | Digest  | Flag                                    | Hue only |
 |---------|-----------------------------------------|----------|
 | Adler32 | `-bilinear -adler32`                    | `-bilinear -adler32 -hue` |
-|         | ![adler32](./imgs/adler32_bilinear.png) | ![adler32](./imgs/adler32_bilinear_hue.png) |
+|         | _same as `-hue`_                        | ![adler32](./imgs/adler32_bilinear_hue.png) |
 | GOST    | `-bilinear -gost`                       | `-bilinear -gost -hue` |
 |         | ![GOST](./imgs/gost_bilinear.png)       | ![GOST](./imgs/gost_bilinear_hue.png) |
 | MD5     | `-bilinear -md5`                        | `-bilinear -md5 -hue` |
@@ -88,7 +88,7 @@ See below for examples of diffrent ImageMagick Interpolation of each color.
 | Digest  | Flag                                   | Hue only |
 |---------|----------------------------------------|----------|
 | Adler32 | `-inverse -adler32`                    | `-inverse -adler32 -hue` |
-|         | ![adler32](./imgs/adler32_inverse.png) | ![adler32](./imgs/adler32_inverse_hue.png) |
+|         | _same as `-hue`_                       | ![adler32](./imgs/adler32_inverse_hue.png) |
 | GOST    | `-inverse -gost`                       | `-inverse -gost -hue` |
 |         | ![GOST](./imgs/gost_inverse.png)       | ![GOST](./imgs/gost_inverse_hue.png) |
 | MD5     | `-inverse -md5`                        | `-inverse -md5 -hue` |
@@ -106,7 +106,7 @@ See below for examples of diffrent ImageMagick Interpolation of each color.
 | Digest  | Flag                                    | Hue only |
 |---------|-----------------------------------------|----------|
 | Adler32 | `-shepards -adler32`                    | `-shepards -adler32 -hue` |
-|         | ![adler32](./imgs/adler32_shepards.png) | ![adler32](./imgs/adler32_shepards_hue.png) |
+|         | _same as `-hue`_                        | ![adler32](./imgs/adler32_shepards_hue.png) |
 | GOST    | `-shepards -gost`                       | `-shepards -gost -hue` |
 |         | ![GOST](./imgs/gost_shepards.png)       | ![GOST](./imgs/gost_shepards_hue.png) |
 | MD5     | `-shepards -md5`                        | `-shepards -md5 -hue` |
@@ -124,7 +124,7 @@ See below for examples of diffrent ImageMagick Interpolation of each color.
 | Digest  | Flag                                   | Hue only |
 |---------|----------------------------------------|----------|
 | Adler32 | `-voronoi -adler32`                    | `-voronoi -adler32 -hue` |
-|         | ![adler32](./imgs/adler32_voronoi.png) | ![adler32](./imgs/adler32_voronoi_hue.png) |
+|         | _same as `-hue`_                       | ![adler32](./imgs/adler32_voronoi_hue.png) |
 | GOST    | `-voronoi -gost`                       | `-voronoi -gost -hue` |
 |         | ![GOST](./imgs/gost_voronoi.png)       | ![GOST](./imgs/gost_voronoi_hue.png) |
 | MD5     | `-voronoi -md5`                        | `-voronoi -md5 -hue` |
