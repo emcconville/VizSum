@@ -11,6 +11,11 @@
 
 #include <stdio.h>
 #include "vizsum-types.h"
+#include "algos/algos_md5.h"
+#include "algos/algos_sha1.h"
+#include "algos/algos_adler32.h"
+#include "algos/algos_whirlpool.h"
+#include "algos/algos_gost.h"
 
 enum algos_flags {
     UndefinedFlag,

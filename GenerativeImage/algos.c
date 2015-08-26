@@ -10,7 +10,7 @@
 
 #include "algos.h"
 
-static struct algos * algo_list;
+static struct algos * algo_list = NULL;
 
 
 struct algos * algo_register(struct algos * a)

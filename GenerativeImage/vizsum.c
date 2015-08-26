@@ -14,11 +14,6 @@
 #include "vizsum.h"
 #include "vizsum-types.h"
 #include "algos.h" 
-#include "algos/algos_md5.h"
-#include "algos/algos_sha1.h"
-#include "algos/algos_adler32.h"
-#include "algos/algos_whirlpool.h"
-
 
 void usage(const char * p)
 {
@@ -27,11 +22,14 @@ void usage(const char * p)
     "\n"
     "Options:\n"
     "  Digest Algorithm:\n"
-    "    -md5           MD5 message-digest algorithm.\n"
+    "    -adler32       Adler32 checksum algorithm.\n"
+    "    -gost          GOST block cipher algorithm.\n"
+    "    -md5           MD5 message-digest algorithm (default).\n"
     "    -sha1          SHA1 message-digest algorithm.\n"
+    "    -whirlpool     WHIRLPOOL message-digest algorithm.\n"
     "\n"
     "  Color Interpolate:\n"
-    "    -barycentric   Use Barycentric Color Interpolate.\n"
+    "    -barycentric   Use Barycentric Color Interpolate (default).\n"
     "    -bilinear      Use Bilinear Color Interpolate.\n"
     "    -shepards      Use Shepards Color Interpolate.\n"
     "    -voronoi       Use Voronoi Color Interpolate.\n"
@@ -52,6 +50,7 @@ int main(int argc, const char * argv[]) {
         "-md5",
         algo_populate_md5,
         NULL});
+    
     algo_register(&(struct algos){
         "-sha1",
         algo_populate_sha1,
@@ -67,7 +66,12 @@ int main(int argc, const char * argv[]) {
         algo_populate_whirlpool,
         NULL
     });
-    
+    algo_register(&(struct algos){
+        "-gost",
+        algo_populate_gost,
+        NULL
+    });
+
     MagickWand * wand;
     PixelWand * bg;
     ExceptionType err;
@@ -111,7 +115,7 @@ int main(int argc, const char * argv[]) {
     }
     
     if ( outfile == NULL ) {
-        fprintf(stderr, "Outfile not defined.");
+        fprintf(stderr, "Outfile not defined.\n");
         usage(argv[0]);
         return 1;
     }

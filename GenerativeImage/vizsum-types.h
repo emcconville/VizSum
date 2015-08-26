@@ -75,10 +75,4 @@ struct hue_map {
     unsigned char h;
 };
 
-/*!
- * @enum algo
- * @abstract Bitwise values for updating the current algo to execute at run-time.
- */
-enum alog { ALGO_MD5 = 1, ALGO_SHA1 = 2, ALGO_HUE = 4 };
-
 #endif
