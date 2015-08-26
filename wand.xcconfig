@@ -1,3 +1,0 @@
-// Configure by MagickWand
-LLVM_CFLAGS = -fopenmp -DMAGICKCORE_HDRI_ENABLE=0 -DMAGICKCORE_QUANTUM_DEPTH=16 -fopenmp -DMAGICKCORE_HDRI_ENABLE=0 -DMAGICKCORE_QUANTUM_DEPTH=16 -I/usr/local/include/ImageMagick-6 
-LLVM_LDFLAGS = -L/usr/local/lib -lMagickWand-6.Q16 -lMagickCore-6.Q16 

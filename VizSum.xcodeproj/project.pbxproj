@@ -48,6 +48,7 @@
 		09674F281B8D115C0052CBA5 /* algos_adler32.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = algos_adler32.h; path = algos/algos_adler32.h; sourceTree = "<group>"; };
 		09674F2A1B8DE5400052CBA5 /* algos_gost.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = algos_gost.c; path = algos/algos_gost.c; sourceTree = "<group>"; };
 		09674F2B1B8DE5400052CBA5 /* algos_gost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = algos_gost.h; path = algos/algos_gost.h; sourceTree = "<group>"; };
+		09674F421B8E376C0052CBA5 /* magickwand.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = magickwand.xcconfig; sourceTree = "<group>"; };
 		098986581B878D8100806FFC /* vizsum */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = vizsum; sourceTree = BUILT_PRODUCTS_DIR; };
 		0989865B1B878D8100806FFC /* vizsum.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vizsum.c; sourceTree = "<group>"; };
 		098986621B878E0500806FFC /* md5.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = md5.c; path = digest/md5.c; sourceTree = "<group>"; };
@@ -114,6 +115,7 @@
 		0989864F1B878D8100806FFC = {
 			isa = PBXGroup;
 			children = (
+				09674F421B8E376C0052CBA5 /* magickwand.xcconfig */,
 				0989865A1B878D8100806FFC /* GenerativeImage */,
 				098986591B878D8100806FFC /* Products */,
 			);
@@ -208,7 +210,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "VERSION=$(git describe --long)\nif [ -z $VERSION ]\nthen\n    VERSION=\"unknown\"\nfi\necho \"#define VIZSUM_VERSION \\\"${VERSION}\\\"\" > ${SRCROOT}/GenerativeImage/version.h";
+			shellScript = "PATH=$PATH:/usr/local/bin\nVERSION=$(git describe --long)\nif [ -z $VERSION ]\nthen\n    VERSION=\"unknown\"\nfi\necho \"#define VIZSUM_VERSION \\\"${VERSION}\\\"\" > ${SRCROOT}/GenerativeImage/version.h\n\nLLVM_CFLAGS=$(MagickWand-config --cflags)\nLLVM_LDFLAGS=$(MagickWand-config --ldflags)\n\necho \"// MagickWand-config\" > ${PROJECT_DIR}/magickwand.xcconfig\necho LLVM_CFLAGS = ${LLVM_CFLAGS} >> ${PROJECT_DIR}/magickwand.xcconfig\necho LLVM_LDFLAGS = ${LLVM_LDFLAGS} >> ${PROJECT_DIR}/magickwand.xcconfig\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -238,6 +240,7 @@
 /* Begin XCBuildConfiguration section */
 		0989865D1B878D8100806FFC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 09674F421B8E376C0052CBA5 /* magickwand.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -260,10 +263,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"MAGICKCORE_HDRI_ENABLE=0",
-					"MAGICKCORE_QUANTUM_DEPTH=16",
-				);
+				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -274,9 +274,8 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"/usr/local/include/ImageMagick-6",
 				);
-				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				LIBRARY_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -286,6 +285,7 @@
 		};
 		0989865E1B878D8100806FFC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 09674F421B8E376C0052CBA5 /* magickwand.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -307,10 +307,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"MAGICKCORE_HDRI_ENABLE=0",
-					"MAGICKCORE_QUANTUM_DEPTH=16",
-				);
+				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -320,9 +317,8 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"/usr/local/include/ImageMagick-6",
 				);
-				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				LIBRARY_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
@@ -331,15 +327,14 @@
 		};
 		098986601B878D8100806FFC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 09674F421B8E376C0052CBA5 /* magickwand.xcconfig */;
 			buildSettings = {
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/system",
 				);
-				OTHER_LDFLAGS = (
-					"-lMagickWand-6.Q16",
-					"-lMagickCore-6.Q16",
-				);
+				OTHER_CFLAGS = "${LLVM_CFLAGS}";
+				OTHER_LDFLAGS = "${LLVM_LDFLAGS}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VERSIONING_SYSTEM = "";
 				VERSION_INFO_BUILDER = "";
@@ -349,15 +344,14 @@
 		};
 		098986611B878D8100806FFC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 09674F421B8E376C0052CBA5 /* magickwand.xcconfig */;
 			buildSettings = {
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/system",
 				);
-				OTHER_LDFLAGS = (
-					"-lMagickWand-6.Q16",
-					"-lMagickCore-6.Q16",
-				);
+				OTHER_CFLAGS = "${LLVM_CFLAGS}";
+				OTHER_LDFLAGS = "${LLVM_LDFLAGS}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VERSIONING_SYSTEM = "";
 				VERSION_INFO_BUILDER = "";
