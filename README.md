@@ -245,5 +245,5 @@ WHIRLPOOL _-whirlpool_
 
 # _&#64257;n_
 
-Suggestions, comments, and request are [welcome](https://github.com/emcconville/VizSum/issues).
+Suggestions, comments, and requests are [welcome](https://github.com/emcconville/VizSum/issues).
 
