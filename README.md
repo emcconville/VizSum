@@ -242,49 +242,18 @@ WHIRLPOOL _-whirlpool_
 
     echo -n emcconville | vizsum -voronoi sumimg.png
 
-Adler32 _-adler32_
-
-![adler32](./imgs/adler32_voronoi.png)
-
-GOST _-gost_
-
-![GOST](./imgs/gost_voronoi.png)
-
-MD5 _-md5_ (default)
-
-![MD5](./imgs/md5_voronoi.png)
-
-SHA1 _-sha1_
-
-![SHA1](./imgs/sha1_voronoi.png)
-
-WHIRLPOOL _-whirlpool_
-
-![WHIRLPOOL](./imgs/whirlpool_voronoi.png)
-
-### Hue only
-
-    echo -n emcconville | vizsum -voronoi -hue sumimg.png
-
-Adler32 _-adler32_
-
-![adler32](./imgs/adler32_voronoi_hue.png)
-
-GOST _-gost_
-
-![GOST](./imgs/gost_voronoi_hue.png)
-
-MD5 _-md5_ (default)
-
-![MD5](./imgs/md5_voronoi_hue.png)
-
-SHA1 _-sha1_
-
-![SHA1](./imgs/sha1_voronoi_hue.png)
-
-WHIRLPOOL _-whirlpool_
-
-![WHIRLPOOL](./imgs/whirlpool_voronoi_hue.png)
+| Digest | Flag | Hue only |
+|--------|------|----------|
+| Adler32 | `-voronoi -adler32` | `-voronoi -adler32 -hue` |
+| | ![adler32](./imgs/adler32_voronoi.png) | ![adler32](./imgs/adler32_voronoi_hue.png) |
+| GOST | `-voronoi -gost` | `-voronoi -gost -hue` |
+| | ![GOST](./imgs/gost_voronoi.png) | ![GOST](./imgs/gost_voronoi_hue.png) |
+| MD5 | `-voronoi -md5` | `-voronoi -md5 -hue` |
+| | ![MD5](./imgs/md5_voronoi.png) | ![MD5](./imgs/md5_voronoi_hue.png) |
+| SHA1 | `-voronoi -sha1` | `-voronoi -sha1 -hue` |
+| | ![SHA1](./imgs/sha1_voronoi.png) | ![SHA1](./imgs/sha1_voronoi_hue.png) |
+| WHIRLPOOL | `-voronoi -whirlpool` | `-voronoi -whirlpool -hue` |
+| | ![WHIRLPOOL](./imgs/whirlpool_voronoi.png) | ![WHIRLPOOL](./imgs/whirlpool_voronoi_hue.png) |
 
 # _&#64257;n_
 
