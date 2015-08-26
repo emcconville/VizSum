@@ -2,7 +2,7 @@
 #ifndef __VizSum__whirlpool__
 #define __VizSum__whirlpool__
 
-#include <stdio.h>
+#include <stdint.h>
 
 typedef struct {
     uint64_t state[8];

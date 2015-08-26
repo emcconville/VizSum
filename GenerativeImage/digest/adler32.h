@@ -2,6 +2,7 @@
 #define __VizSum__adler32__
 
 #include <stdint.h>
+#include <stddef.h>
 
 typedef struct {
     uint32_t state;

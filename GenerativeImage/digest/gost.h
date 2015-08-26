@@ -1,7 +1,8 @@
 #ifndef __VizSum__gost__
 #define __VizSum__gost__
 
-#include <stdio.h>
+#include <stdint.h>
+
 static const uint32_t tables_test[4][256] = {
     {
         0x00072000LU, 0x00075000LU, 0x00074800LU, 0x00071000LU, 0x00076800LU, 0x00074000LU, 0x00070000LU, 0x00077000LU,

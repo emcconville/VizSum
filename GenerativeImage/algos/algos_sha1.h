@@ -11,7 +11,6 @@
 
 #include "vizsum-types.h"
 
-
 /*!
  * @abstract Fill pointer with SHA1 digest information from STDIN
  * @param sha1_digest Pointer to write digest.
