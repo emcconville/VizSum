@@ -1,3 +1,65 @@
+// whirlpool.c - originally modified by Michael Wallner and Sara Golemon from
+// Paulo Barreto and Vincent Rijmen's public domain code, whirlpool.c.
+// All modifications are placed in the public domain
+
+/**
+ * The Whirlpool hashing function.
+ *
+ * <P>
+ * <b>References</b>
+ *
+ * <P>
+ * The Whirlpool algorithm was developed by
+ * <a href="mailto:pbarreto@scopus.com.br">Paulo S. L. M. Barreto</a> and
+ * <a href="mailto:vincent.rijmen@cryptomathic.com">Vincent Rijmen</a>.
+ *
+ * See
+ *      P.S.L.M. Barreto, V. Rijmen,
+ *      ``The Whirlpool hashing function,''
+ *      NESSIE submission, 2000 (tweaked version, 2001),
+ *      <https://www.cosic.esat.kuleuven.ac.be/nessie/workshop/submissions/whirlpool.zip>
+ *
+ * @author  Paulo S.L.M. Barreto
+ * @author  Vincent Rijmen.
+ *
+ * @version 3.0 (2003.03.12)
+ *
+ * =============================================================================
+ *
+ * Differences from version 2.1:
+ *
+ * - Suboptimal diffusion matrix replaced by cir(1, 1, 4, 1, 8, 5, 2, 9).
+ *
+ * =============================================================================
+ *
+ * Differences from version 2.0:
+ *
+ * - Generation of ISO/IEC 10118-3 test vectors.
+ * - Bug fix: nonzero carry was ignored when tallying the data length
+ *      (this bug apparently only manifested itself when feeding data
+ *      in pieces rather than in a single chunk at once).
+ * - Support for MS Visual C++ 64-bit integer arithmetic.
+ *
+ * Differences from version 1.0:
+ *
+ * - Original S-box replaced by the tweaked, hardware-efficient version.
+ *
+ * =============================================================================
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE AUTHORS ''AS IS'' AND ANY EXPRESS
+ * OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHORS OR CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+ * BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+ * OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+ * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
+ */
+
 #include <string.h>
 #include "whirlpool.h"
 
