@@ -17,6 +17,7 @@
 #include "algos/algos_md5.h"
 #include "algos/algos_sha1.h"
 #include "algos/algos_adler32.h"
+#include "algos/algos_whirlpool.h"
 
 
 void usage(const char * p)
@@ -59,6 +60,11 @@ int main(int argc, const char * argv[]) {
     algo_register(&(struct algos){
         "-adler32",
         algo_populate_adler32,
+        NULL
+    });
+    algo_register(&(struct algos){
+        "-whirlpool",
+        algo_populate_whirlpool,
         NULL
     });
     

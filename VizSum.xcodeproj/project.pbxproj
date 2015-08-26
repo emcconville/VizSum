@@ -17,6 +17,8 @@
 		098986671B878F5300806FFC /* sha1.c in Sources */ = {isa = PBXBuildFile; fileRef = 098986651B878F5300806FFC /* sha1.c */; };
 		098986741B88134A00806FFC /* hashimg.c in Sources */ = {isa = PBXBuildFile; fileRef = 098986721B88134A00806FFC /* hashimg.c */; };
 		098986771B8898CE00806FFC /* algos.c in Sources */ = {isa = PBXBuildFile; fileRef = 098986751B8898CE00806FFC /* algos.c */; };
+		09B601601B8D4DF20075D5F2 /* algos_whirlpool.c in Sources */ = {isa = PBXBuildFile; fileRef = 09B6015E1B8D4DF20075D5F2 /* algos_whirlpool.c */; };
+		09B601631B8D57FD0075D5F2 /* gost.c in Sources */ = {isa = PBXBuildFile; fileRef = 09B601611B8D57FD0075D5F2 /* gost.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -55,6 +57,10 @@
 		098986761B8898CE00806FFC /* algos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = algos.h; sourceTree = "<group>"; };
 		098986781B88C1DE00806FFC /* vizsum.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = vizsum.h; sourceTree = "<group>"; };
 		09B6015D1B8C86A10075D5F2 /* vizsum-types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "vizsum-types.h"; sourceTree = "<group>"; };
+		09B6015E1B8D4DF20075D5F2 /* algos_whirlpool.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = algos_whirlpool.c; path = algos/algos_whirlpool.c; sourceTree = "<group>"; };
+		09B6015F1B8D4DF20075D5F2 /* algos_whirlpool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = algos_whirlpool.h; path = algos/algos_whirlpool.h; sourceTree = "<group>"; };
+		09B601611B8D57FD0075D5F2 /* gost.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gost.c; path = digest/gost.c; sourceTree = "<group>"; };
+		09B601621B8D57FD0075D5F2 /* gost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gost.h; path = digest/gost.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +83,8 @@
 				09674F1B1B8CE1AD0052CBA5 /* algos_md5.h */,
 				09674F271B8D115C0052CBA5 /* algos_adler32.c */,
 				09674F281B8D115C0052CBA5 /* algos_adler32.h */,
+				09B6015E1B8D4DF20075D5F2 /* algos_whirlpool.c */,
+				09B6015F1B8D4DF20075D5F2 /* algos_whirlpool.h */,
 			);
 			name = algos;
 			sourceTree = "<group>";
@@ -92,6 +100,8 @@
 				09674F221B8D07FE0052CBA5 /* adler32.h */,
 				09674F241B8D0C520052CBA5 /* whirlpool.c */,
 				09674F251B8D0C520052CBA5 /* whirlpool.h */,
+				09B601611B8D57FD0075D5F2 /* gost.c */,
+				09B601621B8D57FD0075D5F2 /* gost.h */,
 			);
 			name = digest;
 			sourceTree = "<group>";
@@ -206,11 +216,13 @@
 				098986671B878F5300806FFC /* sha1.c in Sources */,
 				09674F291B8D115C0052CBA5 /* algos_adler32.c in Sources */,
 				09674F261B8D0C520052CBA5 /* whirlpool.c in Sources */,
+				09B601631B8D57FD0075D5F2 /* gost.c in Sources */,
 				098986641B878E0500806FFC /* md5.c in Sources */,
 				0989865C1B878D8100806FFC /* vizsum.c in Sources */,
 				09674F1C1B8CE1AD0052CBA5 /* algos_md5.c in Sources */,
 				098986741B88134A00806FFC /* hashimg.c in Sources */,
 				098986771B8898CE00806FFC /* algos.c in Sources */,
+				09B601601B8D4DF20075D5F2 /* algos_whirlpool.c in Sources */,
 				09674F231B8D07FE0052CBA5 /* adler32.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

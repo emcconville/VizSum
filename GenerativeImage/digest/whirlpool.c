@@ -117,7 +117,7 @@ void WHIRLPOOL_Update(WHIRLPOOL_CTX * context, const unsigned char * input, size
     context->buffer.bits   = bufferBits;
     context->buffer.pos    = bufferPos;
 }
-void WHIRLPOOL_Final(unsigned char digest[64], WHIRLPOOL_CTX * context)
+void WHIRLPOOL_Final(WHIRLPOOL_CTX * context, unsigned char digest[64])
 {
     int i;
     unsigned char *buffer      = context->buffer.data;

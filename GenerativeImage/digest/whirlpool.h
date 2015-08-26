@@ -567,7 +567,7 @@ static const uint64_t C7[256] = {
 
 void WHIRLPOOL_Init(WHIRLPOOL_CTX * context);
 void WHIRLPOOL_Update(WHIRLPOOL_CTX * context, const unsigned char * input, size_t len);
-void WHIRLPOOL_Final(unsigned char digest[64], WHIRLPOOL_CTX * context);
+void WHIRLPOOL_Final(WHIRLPOOL_CTX * context, unsigned char digest[64]);
 
 
 #endif /* defined(__VizSum__whirlpool__) */
