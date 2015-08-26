@@ -14,6 +14,10 @@
 #include "vizsum.h"
 #include "vizsum-types.h"
 #include "algos.h" 
+#include "algos/algos_md5.h"
+#include "algos/algos_sha1.h"
+#include "algos/algos_adler32.h"
+
 
 void usage(const char * p)
 {
@@ -42,13 +46,32 @@ void usage(const char * p)
 int main(int argc, const char * argv[]) {
     if (argc < 2) { usage(argv[0]); return 1; }
     
+    /* Regester known algos */
+    algo_register(&(struct algos){
+        "-md5",
+        algo_populate_md5,
+        NULL});
+    algo_register(&(struct algos){
+        "-sha1",
+        algo_populate_sha1,
+        NULL
+    });
+    algo_register(&(struct algos){
+        "-adler32",
+        algo_populate_adler32,
+        NULL
+    });
+    
     MagickWand * wand;
     PixelWand * bg;
     ExceptionType err;
     char * message;
     SparseColorMethod method = BarycentricColorInterpolate;
     const char * outfile = NULL;
-    enum alog algo_method = ALGO_MD5;
+    unsigned long flags = UndefinedFlag;
+    struct algos * algo_method = NULL;
+//    enum alog algo_method = ALGO_MD5;
+    
     int i;
     for (i=1; i < argc; i++) {
         if (strcmp(argv[i], "-barycentric") == 0) {
@@ -61,17 +84,16 @@ int main(int argc, const char * argv[]) {
             method = VoronoiColorInterpolate;
         } else if (strcmp(argv[i], "-inverse") == 0) {
             method = InverseColorInterpolate;
-        } else if (strcmp(argv[i], "-md5") == 0) {
-            algo_method = ALGO_MD5 | (algo_method & ALGO_HUE);
-        } else if (strcmp(argv[i], "-sha1") == 0) {
-            algo_method = ALGO_SHA1 | (algo_method & ALGO_HUE);
-        } else if (strcmp(argv[i], "-hue") == 0) {
-            algo_method |= ALGO_HUE;
+        }else if (strcmp(argv[i], "-hue") == 0) {
+            flags |= HueOnlyFlag;
         } else {
             if (argv[i][0] == '-') {
-                fprintf(stderr, "Unknown options `%s'\n", argv[i]);
-                usage(argv[0]);
-                return 1;
+                algo_method = algo_find_by_argument_flag(argv[i]);
+                if (algo_method == NULL) {
+                    fprintf(stderr, "Unknown options `%s'\n", argv[i]);
+                    usage(argv[0]);
+                    return 1;
+                }
             } else if (outfile != NULL) {
                 fprintf(stderr, "Duplciate outfile `%s'\n", argv[i]);
                 usage(argv[0]);
@@ -87,25 +109,16 @@ int main(int argc, const char * argv[]) {
         usage(argv[0]);
         return 1;
     }
+    
+    if (algo_method == NULL) {
+        // Default
+        algo_method = algo_find_by_argument_flag("-md5");
+    }
 
     struct context_heap argument;
     argument.argument_count = 0;
-    
-    if (algo_method & ALGO_MD5) {
-        if (algo_method & ALGO_HUE) {
-            algo_populate_md5_hue(&argument);
-        } else {
-            algo_populate_md5(&argument);
-        }
-    } else if (algo_method & ALGO_SHA1) {
-        if (algo_method & ALGO_HUE) {
-            algo_populate_sha1_hue(&argument);
-        } else {
-            algo_populate_sha1(&argument);
-        }
-    } else {
-        fprintf(stderr, "Unknown digest method\n");
-    }
+
+    algo_method->populate(&argument, flags);
 
     MagickWandGenesis();
     bg = NewPixelWand();

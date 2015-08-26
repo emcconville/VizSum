@@ -6,107 +6,34 @@
 //  Copyright (c) 2015 emcconville. All rights reserved.
 //
 
+#include <string.h>
+
 #include "algos.h"
-#include "hashimg.h"
-#include "md5.h"
-#include "sha1.h"
 
-#pragma mark md5
+static struct algos * algo_list;
 
-void algo_hash_md5(unsigned char * md5_digest)
+
+struct algos * algo_register(struct algos * a)
 {
-    unsigned char content[ALGO_CONTEXT_BUFFER_LENGTH];
-    size_t content_len = 0;
-    md5_state_t state;
-    md5_init(&state);
-    while (!feof(stdin)) {
-        content_len = fread(content, 1, 1024, stdin);
-        md5_append(&state, (const md5_byte_t *)content, (int)content_len);
-        if (ferror(stdin)) {
-            fprintf(stderr, "Error reading from stdin");
-            break;
+    struct algos * node = algo_list;
+    if (node == NULL) {
+        node = algo_list = a;
+    } else {
+        while (node->next) { node = node->next; }
+        node->next = a;
+    }
+    return algo_list;
+}
+
+struct algos * algo_find_by_argument_flag(const char * arg)
+{
+    struct algos * node = algo_list;
+    size_t len = strlen(arg);
+    while (node && len) {
+        if (strncasecmp(node->argument_flag, arg, len) == 0) {
+            return node;
         }
+        node = node->next;
     }
-    md5_finish(&state, (md5_byte_t *)md5_digest);
-}
-
-
-void algo_populate_md5(struct context_heap * c)
-{
-    unsigned char md5_digest[16];
-    struct md5_map * map_ptr;
-    struct coord * FIRST_PIXEL = &(struct coord){0x00, 0x00};
-    struct coord * LAST_PIXEL  = &(struct coord){0xFF, 0xFF};
-    algo_hash_md5(md5_digest);
-    map_ptr = (struct md5_map *)md5_digest;
-    append_coord(c, &map_ptr->v1);
-    append_color(c, &map_ptr->c1);
-    append_coord(c, &map_ptr->v2);
-    append_color(c, &map_ptr->c2);
-    append_coord(c, FIRST_PIXEL);
-    append_color(c,  &map_ptr->cs);
-    append_coord(c, LAST_PIXEL);
-    append_color(c,  &map_ptr->ce);
-}
-
-void algo_populate_md5_hue(struct context_heap * c)
-{
-    unsigned char md5_digest[16];
-    struct hue_map * map_ptr;
-    algo_hash_md5(md5_digest);
-    int i;
-    for ( i=0; i < 5; i++ ) {
-        map_ptr = (struct hue_map *)(md5_digest + (sizeof(struct hue_map) * i));
-        append_coord(c, &map_ptr->v);
-        append_hue(c, map_ptr->h);
-    }
-}
-
-#pragma mark sha1
-
-void algo_hash_sha1(unsigned char * sha1_digest)
-{
-    unsigned char content[ALGO_CONTEXT_BUFFER_LENGTH];
-    size_t content_len = 0;
-
-    SHA1_CTX context;
-    SHA1_Init(&context);
-    while (!feof(stdin)) {
-        content_len = fread(content, 1, 1024, stdin);
-        SHA1_Update(&context, (const uint8_t *)content, content_len);
-        if (ferror(stdin)) {
-            fprintf(stderr, "Error reading from stdin");
-            break;
-        }
-    }
-    SHA1_Final(&context, sha1_digest);
-}
-
-
-void algo_populate_sha1(struct context_heap * c)
-{
-    int i;
-    struct sha1_map * map_ptr;
-    unsigned char sha1_digest[SHA1_DIGEST_SIZE];
-    algo_hash_sha1(sha1_digest);
-    for ( i = 0; i < 2; i++) {
-        map_ptr = (struct sha1_map *)(sha1_digest + (sizeof(struct sha1_map) * i));
-        append_coord(c, &map_ptr->v1);
-        append_color(c, &map_ptr->c1);
-        append_coord(c, &map_ptr->v2);
-        append_color(c, &map_ptr->c2);
-    }
-}
-
-void algo_populate_sha1_hue(struct context_heap * c)
-{
-    unsigned char sha1_digest[SHA1_DIGEST_SIZE];
-    struct hue_map * map_ptr;
-    algo_hash_sha1(sha1_digest);
-    int i;
-    for ( i=0; i < 6; i++ ) {
-        map_ptr = (struct hue_map *)(sha1_digest + (sizeof(struct hue_map) * i));
-        append_coord(c, &map_ptr->v);
-        append_hue(c, map_ptr->h);
-    }
+    return NULL;
 }
