@@ -48,33 +48,6 @@ void usage(const char * p)
 
 int main(int argc, const char * argv[]) {
     if (argc < 2) { usage(argv[0]); return 1; }
-    
-    /* Regester known algos */
-    algo_register(&(struct algos){
-        "-md5",
-        algo_populate_md5,
-        NULL});
-    
-    algo_register(&(struct algos){
-        "-sha1",
-        algo_populate_sha1,
-        NULL
-    });
-    algo_register(&(struct algos){
-        "-adler32",
-        algo_populate_adler32,
-        NULL
-    });
-    algo_register(&(struct algos){
-        "-whirlpool",
-        algo_populate_whirlpool,
-        NULL
-    });
-    algo_register(&(struct algos){
-        "-gost",
-        algo_populate_gost,
-        NULL
-    });
 
     MagickWand * wand;
     PixelWand * bg;
@@ -84,7 +57,6 @@ int main(int argc, const char * argv[]) {
     const char * outfile = NULL;
     unsigned long flags = UndefinedFlag;
     struct algos * algo_method = NULL;
-//    enum alog algo_method = ALGO_MD5;
     
     int i;
     for (i=1; i < argc; i++) {

@@ -9,31 +9,32 @@
 #include <string.h>
 
 #include "algos.h"
+#include "algos/algos_md5.h"
+#include "algos/algos_sha1.h"
+#include "algos/algos_adler32.h"
+#include "algos/algos_whirlpool.h"
+#include "algos/algos_gost.h"
 
-static struct algos * algo_list = NULL;
+#define ALGO_TYPE_COUNT 5
 
-
-struct algos * algo_register(struct algos * a)
-{
-    struct algos * node = algo_list;
-    if (node == NULL) {
-        node = algo_list = a;
-    } else {
-        while (node->next) { node = node->next; }
-        node->next = a;
-    }
-    return algo_list;
-}
+static struct algos algos_list[ALGO_TYPE_COUNT] = {
+    {"-md5", algo_populate_md5}, // Default
+    {"-sha1",algo_populate_sha1},
+    {"-adler32",algo_populate_adler32},
+    {"-whirlpool",algo_populate_whirlpool},
+    {"-gost",algo_populate_gost}
+};
 
 struct algos * algo_find_by_argument_flag(const char * arg)
 {
-    struct algos * node = algo_list;
+    struct algos * node;
     size_t len = strlen(arg);
-    while (node && len) {
+    int i;
+    for ( i = 0 ; i < ALGO_TYPE_COUNT; i++ ) {
+        node = &algos_list[i];
         if (strncasecmp(node->argument_flag, arg, len) == 0) {
             return node;
         }
-        node = node->next;
     }
     return NULL;
 }
