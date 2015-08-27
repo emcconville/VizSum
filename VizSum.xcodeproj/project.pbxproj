@@ -210,7 +210,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "PATH=$PATH:/usr/local/bin\nVERSION=$(git describe --long)\nif [ -z $VERSION ]\nthen\n    VERSION=\"unknown\"\nfi\necho \"#define VIZSUM_VERSION \\\"${VERSION}\\\"\" > ${SRCROOT}/GenerativeImage/version.h\n\nLLVM_CFLAGS=$(MagickWand-config --cflags)\nLLVM_LDFLAGS=$(MagickWand-config --ldflags)\n\necho \"// MagickWand-config\" > ${PROJECT_DIR}/magickwand.xcconfig\necho LLVM_CFLAGS = ${LLVM_CFLAGS} >> ${PROJECT_DIR}/magickwand.xcconfig\necho LLVM_LDFLAGS = ${LLVM_LDFLAGS} >> ${PROJECT_DIR}/magickwand.xcconfig\n";
+			shellScript = "PATH=$PATH:/usr/local/bin\nVERSION=$(git describe --long)\nif [ -z $VERSION ]\nthen\n    VERSION=\"unknown\"\nfi\necho \"#define VIZSUM_VERSION \\\"${VERSION}\\\"\" > ${SRCROOT}/GenerativeImage/version.h\n\nLLVM_CFLAGS=$(MagickWand-config --cflags)\nLLVM_LDFLAGS=$(MagickWand-config --ldflags)\nLLVM_CFLAGS=\"${LLVM_CFLAGS} -DIMV=$(MagickWand-config --version | cut -b 1)\"\n\n\necho \"// MagickWand-config\" > ${PROJECT_DIR}/magickwand.xcconfig\necho LLVM_CFLAGS = ${LLVM_CFLAGS} >> ${PROJECT_DIR}/magickwand.xcconfig\necho LLVM_LDFLAGS = ${LLVM_LDFLAGS} >> ${PROJECT_DIR}/magickwand.xcconfig\n\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

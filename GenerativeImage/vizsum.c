@@ -9,7 +9,11 @@
 #include <stdio.h>
 #include <string.h>
 
+#if IMV == 7
+#include <MagickWand/MagickWand.h>
+#else
 #include <wand/MagickWand.h>
+#endif
 
 #include "vizsum.h"
 #include "vizsum-types.h"
@@ -136,12 +140,15 @@ int main(int argc, const char * argv[]) {
     wand = NewMagickWand();
     MagickNewImage(wand, 0xFF, 0xFF, bg);
     bg = DestroyPixelWand(bg);
-
+#if IMV == 7
+    MagickSparseColorImage(wand, method, argument.argument_count, argument.arguments);
+#else
     MagickSparseColorImage(wand,
                            AllChannels,
                            method,
                            argument.argument_count,
                            argument.arguments);
+#endif
     message = MagickGetException(wand, &err);
     if ( err != UndefinedException ) {
         fprintf(stderr, "%s\n", message);
