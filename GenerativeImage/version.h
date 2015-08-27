@@ -1,1 +1,1 @@
-#define VIZSUM_VERSION "2.0.0-14-gb32637f"
+#define VIZSUM_VERSION "2.0.0-15-g85d3002"

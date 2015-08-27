@@ -10,14 +10,10 @@
 #include "hashimg.h"
 #include "gost.h"
 
-void algo_populate_gost(struct context_heap * c, unsigned long flags)
+void algo_hash_gost(unsigned char * gost_digest)
 {
-    int i;
-    unsigned char gost_digest[32];
     unsigned char content[ALGO_CONTEXT_BUFFER_LENGTH];
     size_t content_len = 0;
-    struct sha1_map * map_ptr;
-    struct hue_map * map_hue_ptr;
     GOST_CTX context;
     GOST_Init(&context);
     while (!feof(stdin)) {
@@ -29,6 +25,16 @@ void algo_populate_gost(struct context_heap * c, unsigned long flags)
         }
     }
     GOST_Final(&context, gost_digest);
+}
+
+void algo_populate_gost(struct context_heap * c, unsigned long flags)
+{
+    int i;
+    unsigned char gost_digest[32];
+    struct sha1_map * map_ptr;
+    struct hue_map * map_hue_ptr;
+
+    algo_hash_gost(gost_digest);
 
     if (flags) {
         for (i = 0; i < 10; i++) {

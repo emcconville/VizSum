@@ -10,14 +10,10 @@
 #include "hashimg.h"
 #include "whirlpool.h"
 
-void algo_populate_whirlpool(struct context_heap * c, unsigned long flags)
+void algo_hash_whirlpool(unsigned char * whirlpool_digest)
 {
-    int i;
-    unsigned char whirlpool_digest[64];
     unsigned char content[ALGO_CONTEXT_BUFFER_LENGTH];
     size_t content_len = 0;
-    struct sha1_map * map_ptr;
-    struct hue_map * map_hue_ptr;
     WHIRLPOOL_CTX context;
     WHIRLPOOL_Init(&context);
     while (!feof(stdin)) {
@@ -29,7 +25,17 @@ void algo_populate_whirlpool(struct context_heap * c, unsigned long flags)
         }
     }
     WHIRLPOOL_Final(&context, whirlpool_digest);
+}
+
+void algo_populate_whirlpool(struct context_heap * c, unsigned long flags)
+{
+    int i;
+    unsigned char whirlpool_digest[64];
+    struct sha1_map * map_ptr;
+    struct hue_map * map_hue_ptr;
     
+    algo_hash_whirlpool(whirlpool_digest);
+
     if (flags) {
         for (i = 0; i < 21; i++) {
             map_hue_ptr = (struct hue_map *)(whirlpool_digest + (sizeof(struct hue_map) * i));
