@@ -21,7 +21,7 @@
 
 void usage(const char * p)
 {
-    const char * message = "Version: " VIZSUM_VERSION "\n"
+    const char * message = "Version: " VIZSUM_VERSION " (c) E. McConville\n"
     "Usage: %s [options ...] outfile\n"
     "\n"
     "Options:\n"
@@ -144,7 +144,7 @@ int main(int argc, const char * argv[]) {
     MagickSparseColorImage(wand, method, argument.argument_count, argument.arguments);
 #else
     MagickSparseColorImage(wand,
-                           AllChannels,
+                           RedChannel | GreenChannel | BlueChannel,
                            method,
                            argument.argument_count,
                            argument.arguments);

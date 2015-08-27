@@ -28,10 +28,6 @@ void append_color(struct context_heap * list, struct color * c)
     LIST_PUSH(list, char_to_double(c->r)); // Red channel
     LIST_PUSH(list, char_to_double(c->g)); // Green channel
     LIST_PUSH(list, char_to_double(c->b)); // Blue channel
-#if IMV != 7
-    LIST_PUSH(list, 1.0);                  // Index channel
-    LIST_PUSH(list, 1.0);                  // Opacity channel
-#endif
 }
 void append_coord(struct context_heap * list, struct coord * v)
 {
@@ -47,9 +43,5 @@ void append_hue(struct context_heap * list, unsigned char h)
     LIST_PUSH(list, PixelGetRed(wand));    // Red channel
     LIST_PUSH(list, PixelGetGreen(wand));  // Green channel
     LIST_PUSH(list, PixelGetBlue(wand));   // Blue channel
-#if IMV != 7
-    LIST_PUSH(list, 1.0);                  // Index channel
-    LIST_PUSH(list, 1.0);                  // Opacity channel
-#endif
     wand = DestroyPixelWand(wand);
 }
