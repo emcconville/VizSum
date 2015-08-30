@@ -211,7 +211,9 @@ void WHIRLPOOL_Final(WHIRLPOOL_CTX * context, unsigned char digest[64])
     if (bufferPos < WBLOCKBYTES - LENGTHBYTES) {
         memset(&buffer[bufferPos], 0, (WBLOCKBYTES - LENGTHBYTES) - bufferPos);
     }
+#ifndef __clang_analyzer__
     bufferPos = WBLOCKBYTES - LENGTHBYTES;
+#endif
     /*
      * append bit length of hashed data:
      */

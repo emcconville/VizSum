@@ -180,7 +180,9 @@ void SHA1_Transform(uint32_t state[5], const uint8_t buffer[64])
     state[4] += e;
     
     /* Wipe variables */
+#ifndef __clang_analyzer__
     a = b = c = d = e = 0;
+#endif
 }
 
 
@@ -247,7 +249,9 @@ void SHA1_Final(SHA1_CTX* context, uint8_t digest[SHA1_DIGEST_SIZE])
     }
     
     /* Wipe variables */
+#ifndef __clang_analyzer__
     i = 0;
+#endif
     memset(context->buffer, 0, 64);
     memset(context->state, 0, 20);
     memset(context->count, 0, 8);

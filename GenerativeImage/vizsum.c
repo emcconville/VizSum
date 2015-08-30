@@ -60,7 +60,11 @@ int main(int argc, const char * argv[]) {
     
     int i;
     for (i=1; i < argc; i++) {
-        if (strcmp(argv[i], "-barycentric") == 0) {
+        if (strcmp(argv[i], "-h") == 0) {
+            usage(argv[0]); return 0;
+        } else if (strcmp(argv[i], "-?") == 0) {
+            usage(argv[0]); return 0;
+        } else if (strcmp(argv[i], "-barycentric") == 0) {
             method = BarycentricColorInterpolate;
         } else if (strcmp(argv[i], "-bilinear") == 0) {
             method = BilinearColorInterpolate;
@@ -101,7 +105,7 @@ int main(int argc, const char * argv[]) {
         algo_method = algo_find_by_argument_flag("-md5");
     }
 
-    struct context_heap argument;
+    struct context_heap argument = {0};
     argument.argument_count = 0;
 
     algo_method->populate(&argument, flags);
@@ -111,7 +115,7 @@ int main(int argc, const char * argv[]) {
     PixelSetColor(bg, "white");
     wand = NewMagickWand();
     MagickNewImage(wand, 0xFF, 0xFF, bg);
-    bg = DestroyPixelWand(bg);
+    DestroyPixelWand(bg);
 #if IMV == 7
     MagickSparseColorImage(wand, method, argument.argument_count, argument.arguments);
 #else

@@ -20,7 +20,7 @@ struct context_heap {
     /*! Size of doubles in heap */
     size_t argument_count;
     /*! Head of double heap. */
-    double arguments[ALGO_CONTEXT_BUFFER_LENGTH];
+    double arguments[104];
 };
 
 

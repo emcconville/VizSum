@@ -43,5 +43,5 @@ void append_hue(struct context_heap * list, unsigned char h)
     LIST_PUSH(list, PixelGetRed(wand));    // Red channel
     LIST_PUSH(list, PixelGetGreen(wand));  // Green channel
     LIST_PUSH(list, PixelGetBlue(wand));   // Blue channel
-    wand = DestroyPixelWand(wand);
+    DestroyPixelWand(wand);
 }
