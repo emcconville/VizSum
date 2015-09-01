@@ -4,6 +4,12 @@ A generative image exercise for converting checksum data into something visual.
 ImageMagick's sparse-color interpolation methods are used to create stunning
 unique images.
 
+**Example**
+
+    vizsum README.png < README.md
+
+![README.png](README.png)
+
 **How this works**
 
 Take the following message digest
