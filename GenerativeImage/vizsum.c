@@ -38,6 +38,7 @@ void usage(const char * p)
     "    -shepards      Use Shepards Color Interpolate.\n"
     "    -voronoi       Use Voronoi Color Interpolate.\n"
     "    -inverse       Use Inverse Color Interpolate.\n"
+    "    -manhattan     Use Manhattan Color Interpolate.\n"
     "\n"
     "  Mode:\n"
     "    -hue           Only interprete digest values as hue degrees.\n"
@@ -74,7 +75,9 @@ int main(int argc, const char * argv[]) {
             method = VoronoiColorInterpolate;
         } else if (strcmp(argv[i], "-inverse") == 0) {
             method = InverseColorInterpolate;
-        }else if (strcmp(argv[i], "-hue") == 0) {
+        } else if (strcmp(argv[i], "-manhattan") == 0) {
+            method = ManhattanColorInterpolate;
+        } else if (strcmp(argv[i], "-hue") == 0) {
             flags |= HueOnlyFlag;
         } else {
             if (argv[i][0] == '-') {
